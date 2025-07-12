@@ -15,11 +15,50 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>SWISSMILLIONZ</h1>
-  <p>@CC.SWISS</p>
 
-  <button class="button" onclick="sayHello()">Click Me</button>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>SWISSMILLIONZ</h1>
+    <p>Where luxury sound meets street genius.</p>
+    <button class="button" onclick="sayHello()">Explore Beats</button>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- Split Section -->
+  <section class="split">
+    <div class="text">
+      <h2>Built Different</h2>
+      <p>Beats that move culture, crafted with precision and hunger.</p>
+    </div>
+    <div class="image">
+      <img src="your-image.jpg" alt="Studio Image" />
+    </div>
+  </section>
+
+  <!-- Beat Player Section -->
+  <section class="beats">
+    <h2>Listen</h2>
+    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/YOUR_TRACK_ID&color=%23171718&auto_play=false">
+    </iframe>
+  </section>
+
+  <!-- Grid Section -->
+  <section class="grid">
+    <div class="card">🎧 Beat 1</div>
+    <div class="card">🎧 Beat 2</div>
+    <div class="card">🎧 Beat 3</div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About SwissMillionz</h2>
+    <p>SwissMillionz isn’t just a name — it’s a movement. Crafted in silence, released with precision. Founded by @CC.SWISS.</p>
+  </section>
+
+  <script>
+    function sayHello() {
+      alert("Welcome to SwissMillionz 🔥");
+    }
+  </script>
 </body>
 </html>

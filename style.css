@@ -1,38 +1,37 @@
-/* Reset base styles */
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Apple-inspired layout */
 body {
-  font-family: 'Inter', sans-serif;
-  text-align: center;
   background-color: #171718;
   color: #f2f2f2;
-  padding: 60px 20px;
-  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  padding: 0 20px;
 }
 
-/* Main headline */
-h1 {
-  font-size: 3rem;
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 20px;
-  letter-spacing: -0.5px;
+  margin-bottom: 10px;
 }
 
-/* Subtle paragraph style */
-p {
-  font-size: 1.1rem;
+.hero p {
+  font-size: 1.2rem;
   color: #cccccc;
-  max-width: 700px;
-  margin: 0 auto 40px auto;
+  margin-bottom: 30px;
 }
 
-/* Apple-like button */
 .button {
   background-color: #ffffff;
   color: #171718;
@@ -48,4 +47,85 @@ p {
 .button:hover {
   background-color: #e5e5e5;
   color: #000;
+}
+
+/* Split layout */
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  gap: 40px;
+}
+
+.split .text {
+  flex: 1;
+  max-width: 400px;
+}
+
+.split .text h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.split .text p {
+  color: #cccccc;
+}
+
+.split .image {
+  flex: 1;
+  max-width: 400px;
+}
+
+.split .image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Beat section */
+.beats {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.beats h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Grid section */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.card {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* About section */
+.about {
+  max-width: 700px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.about p {
+  color: #cccccc;
 }
