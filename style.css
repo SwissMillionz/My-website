@@ -1,10 +1,51 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #171718;
-  padding: 50px;
+/* Reset base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Apple-inspired layout */
+body {
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  background-color: #171718;
+  color: #f2f2f2;
+  padding: 60px 20px;
+  transition: all 0.3s ease;
+}
+
+/* Main headline */
 h1 {
-  color: #333;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+/* Subtle paragraph style */
+p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+/* Apple-like button */
+.button {
+  background-color: #ffffff;
+  color: #171718;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.button:hover {
+  background-color: #e5e5e5;
+  color: #000;
 }
