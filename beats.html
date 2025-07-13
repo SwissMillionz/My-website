@@ -56,6 +56,9 @@
 
     .beat-info {
       margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .beat-info h3 {
@@ -63,10 +66,43 @@
       margin: 0;
     }
 
+    .price-buy {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: popFade 1.2s ease-out;
+    }
+
     .price {
       color: #800000;
       font-size: 1rem;
       font-weight: bold;
+    }
+
+    .buy-btn {
+      padding: 0.35rem 0.7rem;
+      background: #800000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background: #a00000;
+    }
+
+    @keyframes popFade {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .waveform {
@@ -114,6 +150,10 @@
 
       .price {
         font-size: 0.9rem;
+      }
+
+      .buy-btn {
+        font-size: 0.75rem;
       }
 
       .play-btn {
@@ -166,7 +206,10 @@
       <div class="beat-content">
         <div class="beat-info">
           <h3>Aint Easy</h3>
-          <div class="price">$75.00</div>
+          <div class="price-buy">
+            <div class="price">$75.00</div>
+            <button class="buy-btn">Buy</button>
+          </div>
         </div>
         <div class="waveform" id="waveform1"></div>
       </div>
@@ -179,7 +222,10 @@
       <div class="beat-content">
         <div class="beat-info">
           <h3>New Beat</h3>
-          <div class="price">$75.00</div>
+          <div class="price-buy">
+            <div class="price">$75.00</div>
+            <button class="buy-btn">Buy</button>
+          </div>
         </div>
         <div class="waveform" id="waveform2"></div>
       </div>
@@ -195,7 +241,6 @@
       }, 2500);
     });
 
-    // Beat player logic
     const players = [
       { id: 1, file: 'assets/Aint Easy.mp3' },
       { id: 2, file: 'assets/NewBeat.mp3' }
