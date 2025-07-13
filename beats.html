@@ -7,17 +7,66 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Caveat&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/wavesurfer.js"></script>
+
+  <!-- Loading Screen Styles -->
   <style>
+    /* Hide everything until the page is fully loaded */
     body {
-      background-color: #040404;
-      color: white;
-      font-family: 'Inter', sans-serif;
-      padding: 2rem;
+      visibility: hidden;
     }
 
-    h1 {
+    /* Loading Screen */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #040404;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading img {
+      width: 50px; /* Adjust the size of your favicon */
+      animation: rotate 1s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #222;
+      color: white;
       text-align: center;
-      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-family: 'Caveat', cursive;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .beat-grid {
@@ -84,6 +133,16 @@
 </head>
 <body>
 
+  <!-- Loading Screen -->
+  <div id="loading">
+    <img src="assets/favicon.png" alt="Loading..." />
+  </div>
+
+  <!-- Hero Section for "The Vault" -->
+  <section class="hero">
+    <h1>The Vault</h1>
+  </section>
+
   <h1>🎧 Explore Beats</h1>
 
   <div class="beat-grid">
@@ -97,4 +156,63 @@
           <div class="price">$20.00</div>
         </div>
       </div>
-      <div class="wave
+      <div class="waveform" id="waveform1"></div>
+      <button class="play-btn" id="play1">Play</button>
+    </div>
+
+    <!-- Beat 2 -->
+    <div class="beat-card">
+      <div class="beat-details">
+        <img src="assets/beat-image2.jpg" alt="Beat 2 Image" />
+        <div class="beat-info">
+          <h3>New Beat</h3>
+          <p>A high-energy, upbeat track perfect for clubs.</p>
+          <div class="price">$15.00</div>
+        </div>
+      </div>
+      <div class="waveform" id="waveform2"></div>
+      <button class="play-btn" id="play2">Play</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Hide loading screen and show body content after page loads
+    window.addEventListener('load', function () {
+      document.getElementById('loading').style.opacity = 0;
+      setTimeout(function () {
+        document.getElementById('loading').style.display = 'none';
+        document.body.style.visibility = 'visible';
+      }, 500);
+    });
+
+    const players = [
+      { id: 1, file: 'assets/Aint Easy.mp3' },
+      { id: 2, file: 'assets/NewBeat.mp3' }
+    ];
+
+    players.forEach(player => {
+      const wavesurfer = WaveSurfer.create({
+        container: `#waveform${player.id}`,
+        waveColor: '#ffffff',
+        progressColor: '#800000',
+        height: 80,
+        barWidth: 3,
+        barRadius: 3,
+        responsive: true,
+        cursorColor: '#800000'
+      });
+
+      wavesurfer.load(player.file);
+
+      const playBtn = document.getElementById(`play${player.id}`);
+
+      playBtn.addEventListener('click', () => {
+        wavesurfer.playPause();
+        playBtn.textContent = wavesurfer.isPlaying() ? 'Pause' : 'Play';
+      });
+    });
+  </script>
+
+</body>
+</html>
