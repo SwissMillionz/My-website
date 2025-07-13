@@ -7,11 +7,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/wavesurfer.js"></script>
   <style>
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #loading-screen video {
+      width: 50%;
+      max-width: 600px;
+      border-radius: 10px;
+      animation: fadeOut 2.5s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    /* Main Content */
     body {
       background-color: #040404;
       color: white;
       font-family: 'Inter', sans-serif;
       padding: 2rem;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -22,7 +50,7 @@
 
     .beat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.2rem;
       max-width: 1000px;
       margin: 0 auto;
@@ -54,8 +82,8 @@
     }
 
     .beat-card img {
-      width: 55px;
-      height: 55px;
+      width: 50px;
+      height: 50px;
       object-fit: cover;
       border-radius: 6px;
       flex-shrink: 0;
@@ -69,7 +97,7 @@
     }
 
     .beat-info h3 {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin: 0 0 0.2rem 0;
     }
 
@@ -163,6 +191,14 @@
 </head>
 <body>
 
+  <!-- Loading Screen (Video) -->
+  <div id="loading-screen">
+    <video autoplay muted loop>
+      <source src="assets/your-video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
   <h1>🎧 Explore Beats</h1>
 
   <div class="beat-grid">
@@ -196,6 +232,14 @@
   </div>
 
   <script>
+    // Loading screen removal after 2.5 seconds
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('loading-screen').style.display = 'none';
+      }, 2500);
+    }
+
+    // Wavesurfer setup for audio playback
     const players = [
       { id: 1, file: 'assets/Aint Easy.mp3' },
       { id: 2, file: 'assets/NewBeat.mp3' }
