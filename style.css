@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,161 +6,143 @@
 }
 
 body {
-  background-color: #171718;
-  color: #f2f2f2;
   font-family: 'Inter', sans-serif;
+  background: #111;
+  color: white;
   line-height: 1.6;
-  padding: 0 20px;
 }
 
-/* Hero section */
+/* Hero Section with Video */
 .hero {
   position: relative;
-  text-align: center;
-  padding: 100px 20px 60px;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  color: #cccccc;
-  margin-bottom: 30px;
-}
-
-.hero::after {
-  content: "";
+.hero-video {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
-  height: 150px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #171718);
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 130%;  /* Extended overlay for smoother blend */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
   z-index: 1;
-  pointer-events: none;
+}
+
+.hero-text {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  opacity: 0.85;
 }
 
 .button {
-  background-color: #ffffff;
-  color: #171718;
+  background: white;
+  color: black;
   border: none;
-  padding: 14px 30px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background 0.3s ease;
 }
 
 .button:hover {
-  background-color: #e5e5e5;
-  color: #000;
+  background: #eee;
 }
 
-/* Split layout */
+/* Other Sections */
+section {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)); /* Gradient to blend */
+  color: white;
+  border-radius: 8px;
+}
+
 .split {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  padding: 80px 0;
-  gap: 40px;
+  justify-content: space-between;
 }
 
 .split .text {
   flex: 1;
-  max-width: 400px;
-}
-
-.split .text h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.split .text p {
-  color: #cccccc;
-}
-
-.split .image {
-  flex: 1;
-  max-width: 400px;
+  min-width: 250px;
 }
 
 .split .image img {
-  width: 100%;
-  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-/* Beat section */
-.beats {
-  text-align: center;
-  padding: 60px 0;
-}
-
-.beats h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-/* Grid section */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 60px 0;
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 .card {
-  background-color: #1f1f1f;
-  padding: 20px;
+  background: #222;
+  padding: 2rem;
   border-radius: 8px;
-  transition: transform 0.2s ease;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #111, #333);
 }
 
-/* About section */
 .about {
-  max-width: 700px;
-  margin: 60px auto;
   text-align: center;
 }
 
-.about h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
+/* Audio Player */
+.player {
+  background: #1b1b1b;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 3rem;
 }
 
-.about p {
-  color: #cccccc;
+.player h2 {
+  margin-bottom: 1rem;
 }
 
-/* 🔥 Blood Red Glowing Text Animation */
-@keyframes glow {
-  0%, 100% {
-    text-shadow: 0 0 5px #fff,
-                 0 0 10px #fff,
-                 0 0 20px #ff1a1a,
-                 0 0 30px #ff1a1a,
-                 0 0 40px #ff1a1a;
-  }
-  50% {
-    text-shadow: 0 0 2px #fff,
-                 0 0 4px #fff,
-                 0 0 8px #ff1a1a,
-                 0 0 16px #ff1a1a,
-                 0 0 24px #ff1a1a;
-  }
-}
-
-.glow {
-  animation: glow 2s ease-in-out infinite;
+audio {
+  width: 100%;
+  max-width: 600px;
+  outline: none;
+  border-radius: 8px;
 }
