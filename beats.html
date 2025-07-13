@@ -22,7 +22,7 @@
     }
 
     #loading-screen video {
-      width: 50%;
+      width: 100%;
       max-width: 600px;
       border-radius: 10px;
       animation: fadeOut 2.5s ease forwards;
@@ -68,6 +68,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.6s ease forwards;
+      width: 250px; /* Make cards smaller */
     }
 
     .beat-card:nth-child(1) { animation-delay: 0.1s; }
@@ -194,7 +195,7 @@
   <!-- Loading Screen (Video) -->
   <div id="loading-screen">
     <video autoplay muted loop>
-      <source src="assets/your-video.mp4" type="video/mp4" />
+      <source src="assets/loading.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
