@@ -32,10 +32,11 @@
       background: #111;
       border-radius: 12px;
       display: flex;
-      align-items: center;
+      gap: 1rem;
       padding: 1rem;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      align-items: center;
+      position: relative;
     }
 
     .beat-card img {
@@ -46,14 +47,20 @@
       flex-shrink: 0;
     }
 
-    .beat-info {
-      margin-left: 1rem;
+    .beat-content {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .beat-info {
+      margin-bottom: 0.3rem;
     }
 
     .beat-info h3 {
       font-size: 1rem;
-      margin: 0 0 0.4rem;
+      margin: 0;
     }
 
     .price {
@@ -63,12 +70,16 @@
     }
 
     .waveform {
-      flex: 1;
-      margin-left: 1rem;
+      height: 20px;
+      max-width: 180px;
+      margin-top: 0.3rem;
     }
 
     .play-btn {
-      margin-left: 1rem;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
       padding: 0.4rem 0.8rem;
       background: black;
       color: white;
@@ -89,14 +100,14 @@
         align-items: flex-start;
       }
 
-      .waveform {
-        margin-left: 0;
-        width: 100%;
+      .play-btn {
+        position: static;
         margin-top: 0.5rem;
+        transform: none;
       }
 
-      .play-btn {
-        margin: 0.5rem 0 0;
+      .waveform {
+        max-width: 100%;
       }
     }
   </style>
@@ -108,9 +119,58 @@
   <div class="beat-grid">
     <!-- Beat 1 -->
     <div class="beat-card">
-      <img src="assets/beat-image1.jpg" alt="Beat 1">
-      <div class="beat-info">
-        <h3>Aint Easy</h3>
-        <div class="price">$20.00</div>
+      <img src="assets/beat-image1.jpg" alt="Beat 1 Image" />
+      <div class="beat-content">
+        <div class="beat-info">
+          <h3>Aint Easy</h3>
+          <div class="price">$20.00</div>
+        </div>
+        <div class="waveform" id="waveform1"></div>
       </div>
-      <div class="waveform" id="waveform1"><
+      <button class="play-btn" id="play1">Play</button>
+    </div>
+
+    <!-- Beat 2 -->
+    <div class="beat-card">
+      <img src="assets/beat-image2.jpg" alt="Beat 2 Image" />
+      <div class="beat-content">
+        <div class="beat-info">
+          <h3>New Beat</h3>
+          <div class="price">$15.00</div>
+        </div>
+        <div class="waveform" id="waveform2"></div>
+      </div>
+      <button class="play-btn" id="play2">Play</button>
+    </div>
+  </div>
+
+  <script>
+    const players = [
+      { id: 1, file: 'assets/Aint Easy.mp3' },
+      { id: 2, file: 'assets/NewBeat.mp3' }
+    ];
+
+    players.forEach(player => {
+      const wavesurfer = WaveSurfer.create({
+        container: `#waveform${player.id}`,
+        waveColor: '#ffffff',
+        progressColor: '#800000',
+        height: 20,
+        barWidth: 2,
+        barRadius: 2,
+        responsive: true,
+        cursorColor: '#800000'
+      });
+
+      wavesurfer.load(player.file);
+
+      const playBtn = document.getElementById(`play${player.id}`);
+      playBtn.addEventListener('click', () => {
+        wavesurfer.playPause();
+        playBtn.textContent = wavesurfer.isPlaying() ? 'Pause' : 'Play';
+      });
+    });
+  </script>
+
+</body>
+</html>
