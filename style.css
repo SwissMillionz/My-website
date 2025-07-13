@@ -78,37 +78,48 @@ body {
   background: #eee;
 }
 
-/* Sections */
-section {
-  padding: 4rem 2rem;
-  max-width: 1000px;
-  margin: auto;
+/* Featured Beat Player */
+.player {
+  background: #1b1b1b;
+  padding: 1.5rem; /* Reduced padding */
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 400px; /* Smaller player */
+  margin: auto; /* Center player */
 }
 
-/* Split Layout */
-.split {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+#playPauseButton {
+  padding: 12px 24px; /* Larger button */
+  background-color: #000; /* Black background */
+  color: white; /* White text */
+  font-size: 18px; /* Larger font */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.split .text {
-  flex: 1;
-  min-width: 250px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+#playPauseButton:hover {
+  background-color: #333; /* Darken on hover */
 }
 
-.split .text:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+#waveform {
+  width: 100%;
+  max-width: 600px; /* Adjust width */
+  height: 80px; /* Smaller waveform */
+  margin: 20px auto; /* Center and space out the waveform */
 }
 
-/* Apply Caveat font to the paragraph */
-.split .text p {
-  font-family: 'Caveat', cursive;
-  font-size: 1.6rem;
-  line-height: 1.9;
+/* Grid Section - Remove this part */
+.grid {
+  display: none; /* Hide the grid section */
+}
+
+/* About */
+.about {
+  text-align: center;
 }
 
 /* Fade In Animation */
@@ -124,58 +135,4 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Image Styling */
-.split .image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.card {
-  background: #222;
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  background: linear-gradient(135deg, #111, #333);
-}
-
-/* About */
-.about {
-  text-align: center;
-}
-
-/* Player */
-.player {
-  background: #1b1b1b;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 8px;
-  margin-bottom: 3rem;
-}
-
-.player h2 {
-  margin-bottom: 1rem;
-}
-
-audio {
-  width: 100%;
-  max-width: 600px;
-  outline: none;
-  border-radius: 8px;
 }
