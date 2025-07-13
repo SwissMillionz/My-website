@@ -25,7 +25,7 @@
       width: 100%;
       max-width: 600px;
       border-radius: 10px;
-      animation: fadeOut 2.5s ease forwards;
+      animation: fadeOut 3s ease forwards;
     }
 
     @keyframes fadeOut {
@@ -50,8 +50,8 @@
 
     .beat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -68,7 +68,8 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.6s ease forwards;
-      width: 250px; /* Make cards smaller */
+      width: 300px; /* Made cards wider */
+      height: 120px; /* Shortened card height */
     }
 
     .beat-card:nth-child(1) { animation-delay: 0.1s; }
@@ -83,8 +84,8 @@
     }
 
     .beat-card img {
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
       object-fit: cover;
       border-radius: 6px;
       flex-shrink: 0;
@@ -98,7 +99,7 @@
     }
 
     .beat-info h3 {
-      font-size: 0.9rem;
+      font-size: 1rem;
       margin: 0 0 0.2rem 0;
     }
 
@@ -194,7 +195,7 @@
 
   <!-- Loading Screen (Video) -->
   <div id="loading-screen">
-    <video autoplay muted loop>
+    <video id="loading-video" autoplay muted>
       <source src="assets/loading.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -233,12 +234,13 @@
   </div>
 
   <script>
-    // Loading screen removal after 2.5 seconds
+    // Remove loading screen after video ends (3 seconds)
     window.onload = () => {
-      setTimeout(() => {
+      const video = document.getElementById('loading-video');
+      video.onended = () => {
         document.getElementById('loading-screen').style.display = 'none';
-      }, 2500);
-    }
+      };
+    };
 
     // Wavesurfer setup for audio playback
     const players = [
