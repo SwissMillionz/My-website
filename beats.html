@@ -32,8 +32,35 @@
       background: #111;
       padding: 1.5rem;
       border-radius: 10px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .beat-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 1rem;
+    }
+
+    .beat-details {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .beat-info {
+      flex-grow: 1;
+      padding-left: 1rem;
+    }
+
+    .price {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #800000;
     }
 
     .waveform {
@@ -56,49 +83,18 @@
   </style>
 </head>
 <body>
+
   <h1>🎧 Explore Beats</h1>
 
   <div class="beat-grid">
+    <!-- Beat 1 -->
     <div class="beat-card">
-      <h3>Aint Easy</h3>
-      <div class="waveform" id="waveform1"></div>
-      <button class="play-btn" id="play1">Play</button>
-    </div>
-
-    <div class="beat-card">
-      <h3>New Beat</h3>
-      <div class="waveform" id="waveform2"></div>
-      <button class="play-btn" id="play2">Play</button>
-    </div>
-  </div>
-
-  <script>
-    const players = [
-      { id: 1, file: 'assets/Aint Easy.mp3' },
-      { id: 2, file: 'assets/NewBeat.mp3' }
-    ];
-
-    players.forEach(player => {
-      const wavesurfer = WaveSurfer.create({
-        container: `#waveform${player.id}`,
-        waveColor: '#ffffff',
-        progressColor: '#800000',
-        height: 80,
-        barWidth: 3,
-        barRadius: 3,
-        responsive: true,
-        cursorColor: '#800000'
-      });
-
-      wavesurfer.load(player.file);
-
-      const playBtn = document.getElementById(`play${player.id}`);
-
-      playBtn.addEventListener('click', () => {
-        wavesurfer.playPause();
-        playBtn.textContent = wavesurfer.isPlaying() ? 'Pause' : 'Play';
-      });
-    });
-  </script>
-</body>
-</html>
+      <div class="beat-details">
+        <img src="assets/beat-image1.jpg" alt="Beat 1 Image" />
+        <div class="beat-info">
+          <h3>Aint Easy</h3>
+          <p>A deep, soulful beat with heavy drums and melody.</p>
+          <div class="price">$20.00</div>
+        </div>
+      </div>
+      <div class="wave
