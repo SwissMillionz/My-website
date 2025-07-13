@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Caveat&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Include WaveSurfer.js -->
+  <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
 
@@ -42,10 +45,10 @@
   <!-- Beat Player Section -->
   <section class="player">
     <h2>Featured Beat</h2>
-    <audio controls>
-      <source src="assets/Aint Easy.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+    <!-- WaveSurfer container -->
+    <div id="waveform"></div>
+    <!-- Play/Pause Button -->
+    <button id="playPauseButton">Play</button>
   </section>
 
   <!-- Grid Section -->
@@ -80,6 +83,32 @@
       }
       video.style.opacity = opacity;
     });
+
+    // Initialize WaveSurfer.js
+    const wavesurfer = WaveSurfer.create({
+      container: '#waveform', // The element that will hold the waveform
+      waveColor: '#4e7e7e',   // Waveform color
+      progressColor: '#1db954', // Color when playing
+      height: 150,            // Height of the waveform
+      barWidth: 3,            // Width of the bars in the waveform
+      barRadius: 3,           // Radius of the bars
+      responsive: true,       // Ensure the waveform adjusts to screen size
+      cursorColor: '#1db954' // Color of the playhead
+    });
+
+    // Load the featured beat (replace with your actual file path)
+    wavesurfer.load('assets/Aint Easy.mp3');
+
+    // Play/pause the audio when the button is clicked
+    document.getElementById('playPauseButton').addEventListener('click', function() {
+      wavesurfer.playPause();
+      if (wavesurfer.isPlaying()) {
+        this.textContent = 'Pause';
+      } else {
+        this.textContent = 'Play';
+      }
+    });
   </script>
+
 </body>
 </html>
