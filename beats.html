@@ -4,17 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beats | SwissMillionz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/wavesurfer.js"></script>
-
   <style>
-    /* General Styles */
     body {
       background-color: #040404;
       color: white;
       font-family: 'Inter', sans-serif;
       padding: 2rem;
-      visibility: visible;
     }
 
     h1 {
@@ -23,77 +20,84 @@
       font-size: 2rem;
     }
 
-    /* Beat Card Styles */
     .beat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust card width */
-      gap: 2rem;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .beat-card {
       background: #111;
-      padding: 1rem;
-      border-radius: 15px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      width: 300px; /* Set a fixed width */
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .beat-card img {
-      width: 80px;  /* Image size */
-      height: 80px;
+      width: 60px;
+      height: 60px;
       object-fit: cover;
-      border-radius: 10px;
-      margin-right: 1rem; /* Space between image and text */
-    }
-
-    .beat-details {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      width: 100%;
+      border-radius: 8px;
+      flex-shrink: 0;
     }
 
     .beat-info {
-      flex-grow: 1;
+      margin-left: 1rem;
+      flex: 1;
     }
 
     .beat-info h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .beat-info p {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      margin: 0 0 0.4rem;
     }
 
     .price {
-      font-weight: bold;
       color: #800000;
+      font-size: 0.9rem;
+      font-weight: bold;
     }
 
     .waveform {
-      margin: 0.5rem 0;
+      flex: 1;
+      margin-left: 1rem;
     }
 
     .play-btn {
-      padding: 0.5rem 1rem;
-      background: #000;
-      color: #fff;
+      margin-left: 1rem;
+      padding: 0.4rem 0.8rem;
+      background: black;
+      color: white;
       border: none;
       border-radius: 5px;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .play-btn:hover {
       background: #222;
+    }
+
+    @media screen and (max-width: 500px) {
+      .beat-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .waveform {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+
+      .play-btn {
+        margin: 0.5rem 0 0;
+      }
     }
   </style>
 </head>
@@ -104,62 +108,9 @@
   <div class="beat-grid">
     <!-- Beat 1 -->
     <div class="beat-card">
-      <div class="beat-details">
-        <img src="assets/beat-image1.jpg" alt="Beat 1 Image" />
-        <div class="beat-info">
-          <h3>Aint Easy</h3>
-          <p>A deep, soulful beat with heavy drums and melody.</p>
-          <div class="price">$20.00</div>
-        </div>
+      <img src="assets/beat-image1.jpg" alt="Beat 1">
+      <div class="beat-info">
+        <h3>Aint Easy</h3>
+        <div class="price">$20.00</div>
       </div>
-      <div class="waveform" id="waveform1"></div>
-      <button class="play-btn" id="play1">Play</button>
-    </div>
-
-    <!-- Beat 2 -->
-    <div class="beat-card">
-      <div class="beat-details">
-        <img src="assets/beat-image2.jpg" alt="Beat 2 Image" />
-        <div class="beat-info">
-          <h3>New Beat</h3>
-          <p>A high-energy, upbeat track perfect for clubs.</p>
-          <div class="price">$15.00</div>
-        </div>
-      </div>
-      <div class="waveform" id="waveform2"></div>
-      <button class="play-btn" id="play2">Play</button>
-    </div>
-
-  </div>
-
-  <script>
-    const players = [
-      { id: 1, file: 'assets/Aint Easy.mp3' },
-      { id: 2, file: 'assets/NewBeat.mp3' }
-    ];
-
-    players.forEach(player => {
-      const wavesurfer = WaveSurfer.create({
-        container: `#waveform${player.id}`,
-        waveColor: '#ffffff',
-        progressColor: '#800000',
-        height: 80,
-        barWidth: 3,
-        barRadius: 3,
-        responsive: true,
-        cursorColor: '#800000'
-      });
-
-      wavesurfer.load(player.file);
-
-      const playBtn = document.getElementById(`play${player.id}`);
-
-      playBtn.addEventListener('click', () => {
-        wavesurfer.playPause();
-        playBtn.textContent = wavesurfer.isPlaying() ? 'Pause' : 'Play';
-      });
-    });
-  </script>
-
-</body>
-</html>
+      <div class="waveform" id="waveform1"><
