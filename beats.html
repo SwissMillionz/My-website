@@ -17,13 +17,13 @@
     h1 {
       text-align: center;
       margin-bottom: 2rem;
-      font-size: 1.5rem; /* Slightly smaller than 2rem */
+      font-size: 2rem; /* Keep the header size as is */
     }
 
     .beat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly smaller */
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -40,8 +40,8 @@
     }
 
     .beat-card img {
-      width: 40px; /* Slightly smaller */
-      height: 40px; /* Slightly smaller */
+      width: 80px; /* Increased image size */
+      height: 80px; /* Increased image size */
       object-fit: cover;
       border-radius: 8px;
       flex-shrink: 0;
@@ -59,19 +59,19 @@
     }
 
     .beat-info h3 {
-      font-size: 0.85rem; /* Slightly smaller than 1rem */
+      font-size: 1.2rem; /* Increased title size */
       margin: 0;
     }
 
     .price {
       color: #800000;
-      font-size: 0.8rem; /* Slightly smaller */
+      font-size: 0.9rem; /* Kept price size small */
       font-weight: bold;
     }
 
     .waveform {
-      height: 15px; /* Slightly smaller */
-      max-width: 120px; /* Slightly smaller */
+      height: 20px;
+      max-width: 180px;
       margin-top: 0.3rem;
     }
 
@@ -80,14 +80,14 @@
       right: 1rem;
       top: 50%;
       transform: translateY(-50%);
-      padding: 0.3rem 0.6rem; /* Slightly smaller */
+      padding: 0.4rem 0.8rem;
       background: black;
       color: white;
       border: none;
       border-radius: 5px;
       font-weight: 600;
       cursor: pointer;
-      font-size: 0.7rem; /* Slightly smaller than 0.85rem */
+      font-size: 0.85rem;
     }
 
     .play-btn:hover {
@@ -104,20 +104,20 @@
       }
 
       .beat-card img {
-        width: 30px; /* Slightly smaller */
-        height: 30px; /* Slightly smaller */
+        width: 60px; /* Increased image size for mobile */
+        height: 60px; /* Increased image size for mobile */
       }
 
       .beat-info h3 {
-        font-size: 0.75rem; /* Slightly smaller */
+        font-size: 1rem; /* Increased title size for mobile */
       }
 
       .price {
-        font-size: 0.7rem; /* Slightly smaller */
+        font-size: 0.8rem; /* Slightly smaller for mobile */
       }
 
       .waveform {
-        max-width: 80px; /* Slightly smaller */
+        max-width: 100%;
       }
 
       .play-btn {
@@ -171,9 +171,9 @@
         container: `#waveform${player.id}`,
         waveColor: '#ffffff',
         progressColor: '#800000',
-        height: 15,
-        barWidth: 2,
-        barRadius: 2,
+        height: 20,
+        barWidth: 3,
+        barRadius: 3,
         responsive: true,
         cursorColor: '#800000'
       });
