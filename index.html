@@ -10,6 +10,44 @@
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
 
+  <!-- Fix Overlap: Extra spacing for hero-text button -->
+  <style>
+    .hero-text {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem; /* Space between text and button */
+      opacity: 0.85;
+    }
+
+    .hero-text .button {
+      padding: 0.75rem 1.5rem;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .hero-text .button:hover {
+      background-color: #eee;
+    }
+  </style>
+
   <!-- Include WaveSurfer.js -->
   <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
@@ -25,7 +63,7 @@
     <div class="hero-text">
       <h1>SWISSMILLIONZ</h1>
       <p>Where luxury sound meets street genius.</p>
-     <a href="beats.html" class="button">Explore Beats</a>
+      <a href="beats.html" class="button">Explore Beats</a>
     </div>
   </header>
 
@@ -79,27 +117,21 @@
 
     // Initialize WaveSurfer.js
     const wavesurfer = WaveSurfer.create({
-      container: '#waveform', // The element that will hold the waveform
-      waveColor: '#ffffff',   // Waveform color
-      progressColor: '#800000', // Color when playing
-      height: 80,             // Height of the waveform (smaller)
-      barWidth: 3,            // Width of the bars in the waveform
-      barRadius: 3,           // Radius of the bars
-      responsive: true,       // Ensure the waveform adjusts to screen size
-      cursorColor: '#800000' // Color of the playhead
+      container: '#waveform',
+      waveColor: '#ffffff',
+      progressColor: '#800000',
+      height: 80,
+      barWidth: 3,
+      barRadius: 3,
+      responsive: true,
+      cursorColor: '#800000'
     });
 
-    // Load the featured beat (replace with your actual file path)
     wavesurfer.load('assets/Aint Easy.mp3');
 
-    // Play/pause the audio when the button is clicked
     document.getElementById('playPauseButton').addEventListener('click', function() {
       wavesurfer.playPause();
-      if (wavesurfer.isPlaying()) {
-        this.textContent = 'Pause';
-      } else {
-        this.textContent = 'Play';
-      }
+      this.textContent = wavesurfer.isPlaying() ? 'Pause' : 'Play';
     });
   </script>
 
