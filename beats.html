@@ -5,21 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beats | SwissMillionz</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Caveat&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <style>
+    body {
+      background-color: #040404;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .beat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .beat-card {
+      background: #111;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .waveform {
+      margin: 1rem 0;
+    }
+
+    .play-btn {
+      padding: 0.6rem 1.2rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .play-btn:hover {
+      background: #222;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1 style="text-align: center; padding: 2rem;">🎧 My Beats</h1>
-  </header>
+  <h1>🎧 Explore Beats</h1>
 
-  <section class="grid">
-    <div class="card">🔥 Beat A</div>
-    <div class="card">🎹 Beat B</div>
-    <div class="card">💎 Beat C</div>
-    <!-- Add more cards or WaveSurfer players here -->
-  </section>
+  <div class="beat-grid">
+    <div class="beat-card">
+      <h3>Aint Easy</h3>
+      <div class="waveform" id="waveform1"></div>
+      <button class="play-btn" id="play1">Play</button>
+    </div>
 
-  <footer style="text-align: center; padding: 2rem; color: #777;">
-    © 2025 SwissMillionz
-  </footer>
+    <div class="beat-card">
+      <h3>New Beat</h3>
+      <div class="waveform" id="waveform2"></div>
+      <button class="play-btn" id="play2">Play</button>
+    </div>
+  </div>
+
+  <script>
+    const players = [
+      { id: 1, file: 'assets/Aint Easy.mp3' },
+      { id: 2, file: 'assets/NewBeat.mp3' }
+    ];
+
+    players.forEach(player => {
+      const wavesurfer = WaveSurfer.create({
+        container: `#waveform${player.id}`,
+        waveColor: '#ffffff',
+        progressColor: '#800000',
+        height: 80,
+        barWidth: 3,
+        barRadius: 3,
+        responsive: true,
+        cursorColor: '#800000'
+      });
+
+      wavesurfer.load(player.file);
+
+      const playBtn = document.getElementById(`play${player.id}`);
+
+      playBtn.addEventListener('click', () => {
+        wavesurfer.playPause();
+        playBtn.textContent = wavesurfer.isPlaying() ? 'Pause' : 'Play';
+      });
+    });
+  </script>
 </body>
 </html>
