@@ -9,152 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
-  <style>
-    /* Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <!-- AOS Scroll Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #111;
-      color: white;
-      line-height: 1.6;
-    }
-
-    /* Hero Video Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .hero-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      transition: opacity 0.3s ease-out;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
-      z-index: 1;
-    }
-
-    .hero-text {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .hero-text h1 {
-      font-size: 3rem;
-      letter-spacing: 1px;
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      opacity: 0.85;
-    }
-
-    .button {
-      background: white;
-      color: black;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      margin-top: 1rem;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .button:hover {
-      background: #eee;
-    }
-
-    /* Other Sections */
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .split {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .split .text {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .split .image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .card {
-      background: #222;
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      background: linear-gradient(135deg, #111, #333);
-    }
-
-    .about {
-      text-align: center;
-    }
-
-    /* Audio Player */
-    .player {
-      background: #1b1b1b;
-      padding: 2rem;
-      text-align: center;
-      border-radius: 8px;
-      margin-bottom: 3rem;
-    }
-
-    .player h2 {
-      margin-bottom: 1rem;
-    }
-
-    audio {
-      width: 100%;
-      max-width: 600px;
-      outline: none;
-      border-radius: 8px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -166,14 +24,14 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-text">
-      <h1>SWISSMILLIONZ</h1>
-      <p>Where luxury sound meets street genius.</p>
-      <button class="button" onclick="sayHello()">Explore Beats</button>
+      <h1 class="glow" data-aos="fade-up">SWISSMILLIONZ</h1>
+      <p data-aos="fade-up" data-aos-delay="100">Where luxury sound meets street genius.</p>
+      <button class="button" onclick="sayHello()" data-aos="fade-up" data-aos-delay="200">Explore Beats</button>
     </div>
   </header>
 
   <!-- Split Section -->
-  <section class="split">
+  <section class="split" data-aos="fade-up">
     <div class="text">
       <h2>Built Different</h2>
       <p>Beats that move culture, crafted with precision and hunger.</p>
@@ -184,7 +42,7 @@
   </section>
 
   <!-- Beat Player Section -->
-  <section class="player">
+  <section class="player" data-aos="fade-up">
     <h2>Featured Beat</h2>
     <audio controls>
       <source src="assets/Aint Easy.mp3" type="audio/mpeg">
@@ -193,14 +51,14 @@
   </section>
 
   <!-- Grid Section -->
-  <section class="grid">
-    <div class="card">🎧 Beat 1</div>
-    <div class="card">🎧 Beat 2</div>
-    <div class="card">🎧 Beat 3</div>
+  <section class="grid" data-aos="fade-up">
+    <div class="card" data-aos="zoom-in">🎧 Beat 1</div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="100">🎧 Beat 2</div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="200">🎧 Beat 3</div>
   </section>
 
   <!-- About Section -->
-  <section class="about">
+  <section class="about" data-aos="fade-up">
     <h2>About SwissMillionz</h2>
     <p>SwissMillionz isn’t just a name — it’s a movement. Crafted in silence, released with precision. Founded by @CC.SWISS.</p>
   </section>
@@ -223,6 +81,15 @@
         if (opacity < 0) opacity = 0;
       }
       video.style.opacity = opacity;
+    });
+  </script>
+
+  <!-- AOS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000, // animation duration in ms
+      once: true // only animate once per element
     });
   </script>
 </body>
