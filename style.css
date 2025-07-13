@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #111;
+  background-color: #040404; /* Set background color to #040404 */
   color: white;
   line-height: 1.6;
 }
