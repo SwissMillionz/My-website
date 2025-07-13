@@ -215,7 +215,7 @@
       });
     });
 
-    // Remove loading screen after 5 seconds
+    // Remove loading screen after 3 seconds
     window.onload = () => {
       setTimeout(() => {
         const loadingScreen = document.getElementById("loading-screen");
@@ -223,7 +223,7 @@
         setTimeout(() => {
           loadingScreen.style.display = "none"; // Completely hide it after fading out
         }, 1000); // Wait for fade-out animation to finish before removing
-      }, 5000); // Wait 5 seconds before fading out the loading screen
+      }, 3000); // Wait 3 seconds before fading out the loading screen
     };
   </script>
 
