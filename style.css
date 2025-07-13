@@ -104,6 +104,13 @@ section {
   box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
 }
 
+/* Apply Caveat font to the paragraph */
+.split .text p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  line-height: 1.9;
+}
+
 /* Fade In Animation */
 .animated-text {
   opacity: 0;
