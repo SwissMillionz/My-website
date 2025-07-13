@@ -5,23 +5,172 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SwissMillionz</title>
 
-  <!-- Apple-style font -->
+  <!-- Fonts & Favicon -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      color: white;
+      line-height: 1.6;
+    }
+
+    /* Hero Video Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: opacity 0.3s ease-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+      z-index: 1;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      letter-spacing: 1px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+
+    .button {
+      background: white;
+      color: black;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      margin-top: 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background: #eee;
+    }
+
+    /* Other Sections */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .split {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .split .text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .split .image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #222;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, #111, #333);
+    }
+
+    .about {
+      text-align: center;
+    }
+
+    /* Audio Player */
+    .player {
+      background: #1b1b1b;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+    }
+
+    .player h2 {
+      margin-bottom: 1rem;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 600px;
+      outline: none;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>SWISSMILLIONZ</h1>
-    <p>Where luxury sound meets street genius.</p>
-    <button class="button" onclick="sayHello()">Explore Beats</button>
-  </section>
+  <!-- Hero Section with Video -->
+  <header class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="assets/1003-142621162_small.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>SWISSMILLIONZ</h1>
+      <p>Where luxury sound meets street genius.</p>
+      <button class="button" onclick="sayHello()">Explore Beats</button>
+    </div>
+  </header>
 
   <!-- Split Section -->
   <section class="split">
@@ -35,11 +184,12 @@
   </section>
 
   <!-- Beat Player Section -->
-  <section class="beats">
-    <h2>Listen</h2>
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/YOUR_TRACK_ID&color=%23171718&auto_play=false">
-    </iframe>
+  <section class="player">
+    <h2>🔥 Featured Beat</h2>
+    <audio controls>
+      <source src="assets/your-beat.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   </section>
 
   <!-- Grid Section -->
@@ -55,10 +205,25 @@
     <p>SwissMillionz isn’t just a name — it’s a movement. Crafted in silence, released with precision. Founded by @CC.SWISS.</p>
   </section>
 
+  <!-- Scroll Fade Script -->
   <script>
     function sayHello() {
       alert("Welcome to SwissMillionz 🔥");
     }
+
+    window.addEventListener('scroll', function () {
+      const video = document.querySelector('.hero-video');
+      const scrollY = window.scrollY;
+      const fadeStart = 0;
+      const fadeEnd = 300;
+
+      let opacity = 1;
+      if (scrollY > fadeStart) {
+        opacity = 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart);
+        if (opacity < 0) opacity = 0;
+      }
+      video.style.opacity = opacity;
+    });
   </script>
 </body>
 </html>
