@@ -94,83 +94,22 @@
       background: #222;
     }
 
+    /* Mobile Styles */
     @media screen and (max-width: 500px) {
       .beat-card {
         flex-direction: column;
         align-items: flex-start;
+        padding: 0.8rem;
+        gap: 0.5rem;
       }
 
-      .play-btn {
-        position: static;
-        margin-top: 0.5rem;
-        transform: none;
+      .beat-card img {
+        width: 50px;
+        height: 50px;
       }
 
-      .waveform {
-        max-width: 100%;
+      .beat-info h3 {
+        font-size: 0.95rem;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <h1>🎧 Explore Beats</h1>
-
-  <div class="beat-grid">
-    <!-- Beat 1 -->
-    <div class="beat-card">
-      <img src="assets/beat-image1.jpg" alt="Beat 1 Image" />
-      <div class="beat-content">
-        <div class="beat-info">
-          <h3>Aint Easy</h3>
-          <div class="price">$20.00</div>
-        </div>
-        <div class="waveform" id="waveform1"></div>
-      </div>
-      <button class="play-btn" id="play1">Play</button>
-    </div>
-
-    <!-- Beat 2 -->
-    <div class="beat-card">
-      <img src="assets/beat-image2.jpg" alt="Beat 2 Image" />
-      <div class="beat-content">
-        <div class="beat-info">
-          <h3>New Beat</h3>
-          <div class="price">$15.00</div>
-        </div>
-        <div class="waveform" id="waveform2"></div>
-      </div>
-      <button class="play-btn" id="play2">Play</button>
-    </div>
-  </div>
-
-  <script>
-    const players = [
-      { id: 1, file: 'assets/Aint Easy.mp3' },
-      { id: 2, file: 'assets/NewBeat.mp3' }
-    ];
-
-    players.forEach(player => {
-      const wavesurfer = WaveSurfer.create({
-        container: `#waveform${player.id}`,
-        waveColor: '#ffffff',
-        progressColor: '#800000',
-        height: 20,
-        barWidth: 2,
-        barRadius: 2,
-        responsive: true,
-        cursorColor: '#800000'
-      });
-
-      wavesurfer.load(player.file);
-
-      const playBtn = document.getElementById(`play${player.id}`);
-      playBtn.addEventListener('click', () => {
-        wavesurfer.playPause();
-        playBtn.textContent = wavesurfer.isPlaying() ? 'Pause' : 'Play';
-      });
-    });
-  </script>
-
-</body>
-</html>
+      .price {
