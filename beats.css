@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 1rem 0;
+  border-bottom: 1px solid #80000030;
+  z-index: 1000;
+}
+
+.beat-list {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.beat-card {
+  display: flex;
+  align-items: center;
+  background-color: #111;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.8rem;
+  transition: border-color 0.3s, background 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.beat-card:hover {
+  border-color: #fff;
+  background-color: #181818;
+}
+
+.beat-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+.beat-details {
+  flex: 1;
+}
+
+.beat-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+}
+
+.beat-price {
+  color: #800000;
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.buy-button {
+  background-color: #800000;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  font-weight: 600;
+  border-radius: 5px;
+  margin-left: auto;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.buy-button:hover {
+  opacity: 0.85;
+}
+
+.waveform {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Scroll wheel effect like Apple timer */
+.beat-card {
+  animation: scrollFade 0.6s ease both;
+}
+
+@keyframes scrollFade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .beat-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .beat-image {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .buy-button {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}

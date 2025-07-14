@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE VAULT | SwissMillionz</title>
+  <link rel="stylesheet" href="beats.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+
+  <header class="site-header">THE VAULT</header>
+
+  <main class="beat-list">
+    <!-- Beat 1 -->
+    <div class="beat-card" onclick="togglePlay(1)">
+      <img src="assets/beat-image1.jpg" alt="Beat Art" class="beat-image" />
+      <div class="beat-details">
+        <h2 class="beat-title">Ain't Easy</h2>
+        <p class="beat-price">$75.00</p>
+      </div>
+      <button class="buy-button" onclick="event.stopPropagation()">Buy</button>
+      <div class="waveform" id="waveform1"></div>
+    </div>
+
+    <!-- Beat 2 -->
+    <div class="beat-card" onclick="togglePlay(2)">
+      <img src="assets/beat-image2.jpg" alt="Beat Art" class="beat-image" />
+      <div class="beat-details">
+        <h2 class="beat-title">New Beat</h2>
+        <p class="beat-price">$75.00</p>
+      </div>
+      <button class="buy-button" onclick="event.stopPropagation()">Buy</button>
+      <div class="waveform" id="waveform2"></div>
+    </div>
+  </main>
+
+  <script>
+    const players = [
+      { id: 1, file: 'assets/Aint Easy.mp3' },
+      { id: 2, file: 'assets/NewBeat.mp3' }
+    ];
+
+    const waveSurfers = {};
+
+    players.forEach(player => {
+      waveSurfers[player.id] = WaveSurfer.create({
+        container: `#waveform${player.id}`,
+        waveColor: '#fff',
+        progressColor: '#800000',
+        height: 40,
+        barWidth: 2,
+        barGap: 1,
+        responsive: true,
+        hideScrollbar: true
+      });
+
+      waveSurfers[player.id].load(player.file);
+    });
+
+    function togglePlay(id) {
+      const player = waveSurfers[id];
+      if (player.isPlaying()) {
+        player.pause();
+      } else {
+        player.play();
+      }
+    }
+  </script>
+
+</body>
+</html>
